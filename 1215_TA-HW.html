@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Calculator</title>
+  <script>
+    function add(a, b) {
+      return a + b;
+    }
+
+    function subtract(a, b) {
+      return a - b;
+    }
+
+    function multiply(a, b) {
+      return a * b;
+    }
+
+    function divide(a, b) {
+      if (b === 0) {
+        alert("Cannot divide by zero!");
+        num2 = parseFloat(prompt("Enter second number:"));
+      }
+      return a / b;
+    }
+
+    function calculate() {
+      var num1, num2, operation;
+
+      while (isNaN(num1)) {
+        num1 = parseFloat(prompt("Enter first number:"));
+        if (isNaN(num1)) {
+          alert("Please enter a valid number for the first number!");
+        }
+      }
+
+      while (isNaN(num2)) {
+        num2 = parseFloat(prompt("Enter second number:"));
+        if (isNaN(num2)) {
+          alert("Please enter a valid number for the second number!");
+        }
+      }
+
+      while (!["+","-","*","/"].includes(operation)) {
+        operation = prompt("Choose an operation (+, -, *, /):");
+        if (!["+","-","*","/"].includes(operation)) {
+          alert("Please enter a valid operation!");
+        }
+      }
+
+      var result;
+      switch (operation) {
+        case "+":
+          result = add(num1, num2);
+          break;
+        case "-":
+          result = subtract(num1, num2);
+          break;
+        case "*":
+          result = multiply(num1, num2);
+          break;
+        case "/":
+          result = divide(num1, num2);
+          break;
+        default:
+          throw new Error("Invalid operation!");
+      }
+
+      alert("Result: " + result);
+    }
+
+    window.onload = function() {
+      performCalculations();
+    }
+
+    function performCalculations() {
+       while (true) {
+        calculate();
+        var continueCalculation = prompt("Do you want to perform another calculation? (yes/no)").toLowerCase();
+        if (continueCalculation !== 'yes') {
+          break;
+        }
+      }
+    }
+  </script>
+</head>
+<body>
+</body>
+</html>
